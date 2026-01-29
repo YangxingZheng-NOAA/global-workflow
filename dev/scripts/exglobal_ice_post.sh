@@ -87,7 +87,7 @@ if [[ "${RUN}" == sfs ]]; then
          nccopy -k 4 -d 5 "${output_month_file}" "${output_month_file}.tmp" && mv "${output_month_file}.tmp" "${output_month_file}"
 
          if [[ -f "${output_month_file}.tmp" ]]; then
-         rm -f "${output_month_file}.tmp"
+            rm -f "${output_month_file}.tmp"
          fi
 
       done
@@ -98,7 +98,9 @@ if [[ "${RUN}" == sfs ]]; then
    export err=$?
    if [[ ${err} -ne 0 ]]; then
      echo "FATAL ERROR: Failed to generate monthly mean ice products files"
-     rm -f "${COMOUT_ICE_NETCDF}/native/${RUN}.ice.t${current_cycle}.monthly_avg."*"nc"
+     if [[ -f "${COMOUT_ICE_NETCDF}/native/${RUN}.ice.t${current_cycle}.monthly_avg."*"nc" ]]; then
+        rm -f "${COMOUT_ICE_NETCDF}/native/${RUN}.ice.t${current_cycle}.monthly_avg."*"nc"
+     fi
      exit "${err}"
    fi
 fi

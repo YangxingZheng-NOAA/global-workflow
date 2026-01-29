@@ -31,11 +31,11 @@ if [[ "${RUN}" == sfs ]]; then
       output_1p00_file="${COMOUT_OCEAN_NETCDF}/${grid}/${RUN}.temp5m.t${cyc}z.${grid}.${interval}hr_avg.f${fhr3}.nc"
 
       if [[ -f ${tmp_file} ]]; then
-      rm -f "${tmp_file}"
+         rm -f "${tmp_file}"
       fi
 
       if [[ -f ${output_native_file} ]]; then
-      rm -f "${output_native_file}"
+         rm -f "${output_native_file}"
       fi
 
       ncks -d z_l,2,2 -v temp "${input_file}" "${tmp_file}"
@@ -59,7 +59,7 @@ if [[ "${RUN}" == sfs ]]; then
    nccopy -k 4 -d 5 "${merge_file}" "${merge_file}.tmp" && mv "${merge_file}.tmp" "${merge_file}"
 
    if [[ -f "${merge_file}.tmp" ]]; then
-   rm -f "${merge_file}.tmp"
+      rm -f "${merge_file}.tmp"
    fi
 
    rm -f "${COMOUT_OCEAN_NETCDF}/${grid}/${RUN}.temp5m.t${cyc}z.${grid}.${FHOUT_ocn6hr}hr_avg.f"*".nc"
@@ -187,7 +187,9 @@ if [[ "${RUN}" == sfs ]]; then
    export err=$?
    if [[ ${err} -ne 0 ]]; then
       echo "FATAL ERROR: Failed to generate monthly mean ocean product files"
-      rm -f "${COMOUT_OCEAN_NETCDF}/${grid}/${RUN}."*".t${current_cycle}.${grid}.monthly_avg."*".nc"
+      if [[ -f "${COMOUT_OCEAN_NETCDF}/${grid}/${RUN}."*".t${current_cycle}.${grid}.monthly_avg."*".nc" ]]; then
+         rm -f "${COMOUT_OCEAN_NETCDF}/${grid}/${RUN}."*".t${current_cycle}.${grid}.monthly_avg."*".nc"
+      fi
       exit "${err}"
    fi
 fi
@@ -234,7 +236,7 @@ if [[ "${RUN}" == sfs ]]; then
       cdo mergetime "${COMOUT_OCEAN_NETCDF}/${grid}/sfs.${var}.t00z.${grid}.f*.nc" "${merge_file}"
       nccopy -k 4 -d 5 "${merge_file}" "${merge_file}.tmp" && mv "${merge_file}.tmp" "${merge_file}"
       if [[ -f "${merge_file}.tmp" ]]; then
-      rm -f "${merge_file}.tmp"
+         rm -f "${merge_file}.tmp"
       fi
 
       rm -f "${COMOUT_OCEAN_NETCDF}/${grid}/sfs.${var}.t00z.${grid}.f"*".nc"
