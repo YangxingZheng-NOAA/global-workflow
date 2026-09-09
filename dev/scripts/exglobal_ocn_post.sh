@@ -59,9 +59,9 @@ done
 echo "INFO: Line ending validation complete."
 
 #path to python scripts to calculate depth of 20C isotherm,TCHP and OHC
-export CALC_D20="${USHglobal}/python/ocn_diag/calc_d20.py"
-export CALC_TCHP="${USHglobal}/python/ocn_diag/calc_tchp.py"
-export CALC_OHC="${USHglobal}/python/ocn_diag/calc_ohc.py"
+export CALC_D20="${USHglobal}/calc_d20.py"
+export CALC_TCHP="${USHglobal}/calc_tchp.py"
+export CALC_OHC="${USHglobal}/calc_ohc.py"
 
 # Path for the final ocean post output
 mkdir -m 755 -p "${COMOUT_OCEAN_NETCDF}/${grid}"
@@ -76,7 +76,8 @@ export USE_CFP=YES
 echo "Begin OCEAN POST work"
 
 if [[ "${RUN}" == sfs ]]; then
-    # Task 0. Clean all unfinished output files in the temporary directory from the previous failed post job
+
+    # Task 0. Clean all unfinished output files in the temporary directory from the previous failed post job 
     rm -f "${OCEAN_PRODUCT_OUTPUT}/netcdf/${grid}/${RUN}.temp5m.t${cyc}z.${grid}.6hr_avg.nc"
     rm -f "${OCEAN_PRODUCT_OUTPUT}/netcdf/${grid}/sfs"*"monthly_avg"*".nc"
     rm -f "${OCEAN_PRODUCT_OUTPUT}/netcdf/${grid}/sfs."*".t00z.${grid}.daily.nc"
@@ -268,8 +269,6 @@ rm -f "${DATA}"/mpmd.*.out
 echo "Remove daily SSH fragments"
 rm -f "${DATA}/${RUN}.SSH.t00z.0p25.f"*".nc"
 echo "Ocean post success! Removing remapped input files and history files."
-#rm -f "${OCEAN_PRODUCT_OUTPUT}/netcdf/${grid}/${RUN}.t${cyc}z.${grid}.f"*".nc"
-#rm -f "${OCEAN_HISTORY_OUTPUT}/${RUN}."*".nc"
 echo "INFO: Cleanup Complete. Workflow status: SUCCESS"
 echo "End OCEAN POST work"
 ###############################################################################
