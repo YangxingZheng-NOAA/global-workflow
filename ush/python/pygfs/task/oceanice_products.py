@@ -46,13 +46,13 @@ class OceanIceProducts(Task):
         super().__init__(config)
         if self.task_config.RUN == 'sfs':
             self.VALID_PRODUCT_GRIDS = {'mx025': ['1p00'],
-                               'mx050': ['1p00'],
-                               'mx100': ['1p00']}
+                                        'mx050': ['1p00'],
+                                        'mx100': ['1p00']}
         else:
             self.VALID_PRODUCT_GRIDS = {'mx025': ['1p00', '0p25'],
-                               'mx050': ['1p00', '0p50'],
-                               'mx100': ['1p00'],
-                               'mx500': ['5p00']}
+                                        'mx050': ['1p00', '0p50'],
+                                        'mx100': ['1p00'],
+                                        'mx500': ['5p00']}
 
         if self.task_config.COMPONENT not in self.VALID_COMPONENTS:
             raise NotImplementedError(f'{self.task_config.COMPONENT} is not a valid model component.\n' +
