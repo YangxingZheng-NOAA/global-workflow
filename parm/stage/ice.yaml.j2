@@ -1,5 +1,5 @@
 ice:
-    {% if START_ICE_FROM_ANA == True %}
+    {% if START_ICE_FROM_ANA == True or ("ICE_FROM_ANA" | getenv) == "YES"%}
     mkdir:
         - "{{ COMOUT_ICE_ANALYSIS }}"
     link_req:

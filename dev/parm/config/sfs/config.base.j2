@@ -311,6 +311,11 @@ export DO_LAND_IAU=".false."
 export DONST="YES"
 if [[ ${DONST} = "YES" ]]; then export FNTSFA="        "; fi
 
+# if restart ice from analysis for sfs
+if [[ ${RUN} == "sfs" ]] ; then
+export  ICE_FROM_ANA="YES"
+fi
+
 # The switch to apply SST elevation correction or not
 export nst_anl=.true.
 
