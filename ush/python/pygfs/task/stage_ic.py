@@ -83,7 +83,7 @@ class Stage(Task):
             if self.task_config.get("DOIAU_COLDSTART", False):
                 config_vars['START_ICE_FROM_ANA'] = True
             if self.task_config.get("ICE_FROM_ANA", False):
-+                config_vars['START_ICE_FROM_ANA'] = True
+                config_vars['START_ICE_FROM_ANA'] = True
 
         return config_vars
 
