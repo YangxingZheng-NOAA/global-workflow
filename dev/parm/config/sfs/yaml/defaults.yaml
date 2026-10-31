@@ -24,6 +24,7 @@ base:
   MOM6_INTERP_ICS: "NO"
   FIXglobal: "${HOMEglobal}/fix"
   DOIAU_COLDSTART: "NO"
+  ICE_FROM_ANA: "NO"
 fcst:
   CHECK_LAND_RESTART_OROG: "YES"
   reforecast: "YES"
