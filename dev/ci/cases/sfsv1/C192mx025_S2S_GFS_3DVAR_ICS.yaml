@@ -12,8 +12,8 @@ experiment:
   nens: {{ 'NENS_GW' | getenv if ('NENS_GW' | getenv) != 'UNDEFINED' else 10 }}
   comroot: {{ 'RUNTESTS' | getenv }}/COMROOT
   expdir: "{{ 'EXPDIR_TOP' | getenv if ('EXPDIR_TOP' | getenv) != 'UNDEFINED' else ('RUNTESTS' | getenv) }}/EXPDIR"
-  icsdir: {{ 'TOPICDIR' | getenv }}/GFS_DA/C192mx025
-  yaml: {{ HOMEglobal }}/dev/ci/cases/yamls/sfs_full_C192mx025_GFSDA_ICS.yaml
+  icsdir: {{ 'TOPICDIR' | getenv }}/GFS_3DVAR/C192mx025
+  yaml: {{ HOMEglobal }}/dev/ci/cases/yamls/sfs_full_C192mx025_GFS_3DVAR_ICS.yaml
 
 workflow:
   engine: rocoto
